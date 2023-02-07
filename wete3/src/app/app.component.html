@@ -1,11 +1,9 @@
-<div class="header">
-  <h1>{{ form.controls.projectTitle.value}}
-  </h1>
-</div>
-<form [formGroup]="form">
-  <label>Zadajte názov projektu:
-    <input type="number"
-           formControlName="projectTitle" />
-    <input type="checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="check[0].checked" (click)="onChangeCheck(0)">
-  </label>
-</form>
+
+<div>
+  <input type="number" [(ngModel)]="enteredNumber" (input)="onChangeNumber(enteredNumber)" />
+    <br>
+    <span *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7]">
+      <input type="checkbox" [(ngModel)]="check2[i]" (click)="onChangeCheck(i)">
+    </span>
+
+  </div>
