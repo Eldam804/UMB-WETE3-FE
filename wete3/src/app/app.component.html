@@ -6,5 +6,6 @@
   <label>Zadajte názov projektu:
     <input type="number"
            formControlName="projectTitle" />
+    <input type="checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="check[0].checked" (click)="onChangeCheck(0)">
   </label>
 </form>
