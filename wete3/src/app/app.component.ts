@@ -7,6 +7,7 @@ import {FormControl, FormGroup} from "@angular/forms";
     './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   enteredNumber = 0;
   check2 = [false, false, false, false, false, false, false, false];
