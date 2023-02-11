@@ -1,12 +1,21 @@
 <div class="header">
 
-<input type="number"[(ngModel)]="enteredNumber" (input)="ZmenaCislo(enteredNumber)">
-<input type="checkbox"[(ngModel)]="checkbox[0]" (click)="ZmenaCheckboxu(0)">
-<input type="checkbox"[(ngModel)]="checkbox[1]" (click)="ZmenaCheckboxu(1)">
-<input type="checkbox"[(ngModel)]="checkbox[2]" (click)="ZmenaCheckboxu(2)">
-<input type="checkbox"[(ngModel)]="checkbox[3]" (click)="ZmenaCheckboxu(3)">
-<input type="checkbox"[(ngModel)]="checkbox[4]" (click)="ZmenaCheckboxu(4)">
-<input type="checkbox"[(ngModel)]="checkbox[5]" (click)="ZmenaCheckboxu(5)">
-<input type="checkbox"[(ngModel)]="checkbox[6]" (click)="ZmenaCheckboxu(6)">
-<input type="checkbox"[(ngModel)]="checkbox[7]" (click)="ZmenaCheckboxu(7)">
+<!--<input type="number"[(ngModel)]="enteredNumber" (input)="ZmenaCislo(enteredNumber)">-->
+  <input #input (change)="ZmenaCislo(input.valueAsNumber)" type="number" [value]="enteredNumber"/><br>
+  <input (change)="ZmenaCheckboxu(0) "type="checkbox" [checked]="checkbox[0]"/>
+  <input (change)="ZmenaCheckboxu(1) "type="checkbox" [checked]="checkbox[1]"/>
+  <input (change)="ZmenaCheckboxu(2) "type="checkbox" [checked]="checkbox[2]"/>
+  <input (change)="ZmenaCheckboxu(3) "type="checkbox" [checked]="checkbox[3]"/>
+  <input (change)="ZmenaCheckboxu(4) "type="checkbox" [checked]="checkbox[4]"/>
+  <input (change)="ZmenaCheckboxu(5) "type="checkbox" [checked]="checkbox[5]"/>
+  <input (change)="ZmenaCheckboxu(6) "type="checkbox" [checked]="checkbox[6]"/>
+  <input (change)="ZmenaCheckboxu(7) "type="checkbox" [checked]="checkbox[7]"/>
+<!--<input type="checkbox"[(ngModel)]="checkbox[0]" (click)="ZmenaCheckboxu(0)">-->
+<!--<input type="checkbox"[(ngModel)]="checkbox[1]" (click)="ZmenaCheckboxu(1)">-->
+<!--<input type="checkbox"[(ngModel)]="checkbox[2]" (click)="ZmenaCheckboxu(2)">-->
+<!--<input type="checkbox"[(ngModel)]="checkbox[3]" (click)="ZmenaCheckboxu(3)">-->
+<!--<input type="checkbox"[(ngModel)]="checkbox[4]" (click)="ZmenaCheckboxu(4)">-->
+<!--<input type="checkbox"[(ngModel)]="checkbox[5]" (click)="ZmenaCheckboxu(5)">-->
+<!--<input type="checkbox"[(ngModel)]="checkbox[6]" (click)="ZmenaCheckboxu(6)">-->
+<!--<input type="checkbox"[(ngModel)]="checkbox[7]" (click)="ZmenaCheckboxu(7)">-->
   </div>

@@ -11,19 +11,21 @@ import {FormControl, FormGroup} from "@angular/forms";
 
 export class AppComponent {
   enteredNumber=0;
+
   checkbox = [false,false,false,false,false,false,false,false];
   ZmenaCheckboxu(cislo :number): void{
 
     this.checkbox[cislo] = !this.checkbox[cislo];
     let binary = "";
     for (let i = 0; i<8;i++) {
-      if (this.checkbox) {
+      if (this.checkbox[i]) {
         binary += "1"
       } else {
         binary += "0"
       }
     }
       this.enteredNumber = parseInt(binary,2);
+    console.log(this.enteredNumber);
   }
   ZmenaCislo (cislo :number): void{
     if(cislo<=255 && cislo >=0) {
