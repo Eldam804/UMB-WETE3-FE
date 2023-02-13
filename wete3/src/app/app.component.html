@@ -1,9 +1,11 @@
-<div class="header">
-  <h1> {{title}}</h1>
-</div>
-
-<div>
-  <label> Zadajte názov projektu:
-    <input type="text" [(ngModel)]="title"/>
+<form [formGroup]="form">
+  <label>meno:
+    <input type="text" formControlName="name">
   </label>
-</div>
+  <label>priezvisko:
+    <input type="text" formControlName="surname">
+  </label>
+  <button type="button"
+          (click)="savePerson()"
+  >save person</button>
+</form>

@@ -8,5 +8,14 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = "Názov projektu"
+  form: FormGroup;
+  constructor() {
+    this.form = new FormGroup({
+      name: new FormControl(),
+      surname: new FormControl()
+    });
+  }
+  savePerson(): void {
+    console.log("Osoba:", this.form.value);
+  }
 }
