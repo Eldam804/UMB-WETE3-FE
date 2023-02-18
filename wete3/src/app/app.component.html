@@ -1,4 +1,70 @@
-<form [formGroup]="form">
+<div>
+  <button (click)="changeMenu(menu.USERS)">POUŽIVATELIA</button>
+  <button (click)="changeMenu(menu.BOOKS)">KNIHY</button>
+  <button (click)="changeMenu(menu.BORROWINGS)">VÝPOŽIČKY</button>
+</div>
+
+<form [formGroup]="formBorrowings" *ngIf="actualMenu == menu.BORROWINGS">
+  <label>id:
+    <input type="text" formControlName="id">
+  </label>
+  <label>book:
+    <input type="text" formControlName="book">
+  </label>
+  <label>user:
+    <input type="text" formControlName="user">
+  </label>
+  <button (click)="addBorrowed()">Pridaj</button>
+  <table *ngIf="borrowed.length">
+    <tr>
+      <th>ID</th>
+      <th>Book</th>
+      <th>User</th>
+
+    </tr>
+    <tr *ngFor="let val of borrowed">
+      <td>{{val.id}}</td>
+      <td>{{val.book}}</td>
+      <td>{{val.user}}</td>
+    </tr>
+  </table>
+</form>
+
+<form [formGroup]="formBooks" *ngIf="actualMenu == menu.BOOKS">
+  <label>id:
+    <input type="text" formControlName="id">
+  </label>
+  <label>name:
+    <input type="text" formControlName="title">
+  </label>
+  <label>author:
+    <input type="text" formControlName="author">
+  </label>
+  <label>available:
+    <input type="text" formControlName="available">
+  </label>
+  <button (click)="addBook()">Pridaj</button>
+  <table *ngIf="books.length">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Author</th>
+      <th>Available</th>
+
+    </tr>
+    <tr *ngFor="let val of books">
+      <td>{{val.id}}</td>
+      <td>{{val.title}}</td>
+      <td>{{val.author}}</td>
+      <td>{{val.available}}</td>
+    </tr>
+  </table>
+</form>
+
+<form [formGroup]="form" *ngIf="actualMenu == menu.USERS">
+  <label>id:
+    <input type="text" formControlName="id">
+  </label>
   <label>meno:
     <input type="text" formControlName="name">
   </label>
@@ -8,4 +74,16 @@
   <button type="button"
           (click)="savePerson()"
   >save person</button>
+  <table *ngIf="persons.length">
+    <tr>
+      <th>ID</th>
+      <th>Meno</th>
+      <th>Priezvisko</th>
+    </tr>
+    <tr *ngFor="let val of persons">
+      <td>{{val.id}}</td>
+      <td>{{val.name}}</td>
+      <td>{{val.surname}}</td>
+    </tr>
+  </table>
 </form>
