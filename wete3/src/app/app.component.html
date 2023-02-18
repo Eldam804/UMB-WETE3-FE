@@ -1,8 +1,87 @@
-
 <div>
-  <input type="number" [(ngModel)]="enteredNumber" (input)="onChangeNumber(enteredNumber)" />
-    <br>
-    <span *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7]">
-      <input type="checkbox" [(ngModel)]="check2[i]" (click)="onChangeCheck(i)">
-    </span>
-  </div>
+  <button (click)="changeMenu(menu.USERS)">Users</button>
+  <button (click)="changeMenu(menu.BOOKS)">Books</button>
+  <button (click)="changeMenu(menu.BORROWINGS)">Borrowings</button>
+</div>
+
+<form [formGroup]="formBorrowings" *ngIf="actualMenu == menu.BORROWINGS">
+  <label>id:
+    <input type="text" formControlName="id">
+  </label>
+  <label>book:
+    <input type="text" formControlName="book">
+  </label>
+  <label>user:
+    <input type="text" formControlName="user">
+  </label>
+  <button (click)="addBorrowed()">Pridaj</button>
+  <table *ngIf="borrowed.length">
+    <tr>
+      <th>ID</th>
+      <th>Book</th>
+      <th>User</th>
+
+    </tr>
+    <tr *ngFor="let val of borrowed">
+      <td>{{val.id}}</td>
+      <td>{{val.book}}</td>
+      <td>{{val.user}}</td>
+    </tr>
+  </table>
+</form>
+
+<form [formGroup]="formBooks" *ngIf="actualMenu == menu.BOOKS">
+  <label>id:
+    <input type="text" formControlName="id">
+  </label>
+  <label>name:
+    <input type="text" formControlName="title">
+  </label>
+  <label>author:
+    <input type="text" formControlName="author">
+  </label>
+  <label>available:
+    <input type="text" formControlName="available">
+  </label>
+  <button (click)="addBook()">Pridaj</button>
+  <table *ngIf="books.length">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Author</th>
+      <th>Available</th>
+
+    </tr>
+    <tr *ngFor="let val of books">
+      <td>{{val.id}}</td>
+      <td>{{val.title}}</td>
+      <td>{{val.author}}</td>
+      <td>{{val.available}}</td>
+    </tr>
+  </table>
+</form>
+
+<form [formGroup]="form" *ngIf="actualMenu == menu.USERS">
+  <label>id:
+    <input type="text" formControlName="id">
+  </label>
+  <label>name:
+    <input type="text" formControlName="name">
+  </label>
+  <label>contact:
+    <input type="text" formControlName="contact">
+  </label>
+  <button type="button" (click)="savePerson()">save person</button>
+  <table *ngIf="persons.length">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Contact</th>
+    </tr>
+    <tr *ngFor="let val of persons">
+      <td>{{val.id}}</td>
+      <td>{{val.name}}</td>
+      <td>{{val.contact}}</td>
+    </tr>
+  </table>
+</form>
