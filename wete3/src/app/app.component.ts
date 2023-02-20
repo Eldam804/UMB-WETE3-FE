@@ -24,6 +24,7 @@ export class AppComponent {
   persons: Array<{
     id: number;
     name: string;
+    surname: string;
     contact: string
   }> = [];
   books: Array<{
@@ -41,7 +42,8 @@ export class AppComponent {
     this.form = new FormGroup({
       id: new FormControl(),
       name: new FormControl(null, Validators.required),
-      contact: new FormControl(null, [Validators.required, Validators.max(20)])
+      surname: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      contact: new FormControl()
     });
     this.formBooks = new FormGroup({
       id: new FormControl(),
