@@ -1,6 +1,13 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 
+
+export enum Menu{
+  BOOKS = "BOOKS",
+  USERS = "USERS",
+  BORROWINGS = "BORROWINGS"
+}
+
 @Component({
   selector: 'app-root',
   templateUrl:
@@ -8,38 +15,59 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./app.component.css']
 })
 
-
 export class AppComponent {
-  enteredNumber=0;
-
-  checkbox = [false,false,false,false,false,false,false,false];
-  ZmenaCheckboxu(cislo :number): void{
-
-    this.checkbox[cislo] = !this.checkbox[cislo];
-    let binary = "";
-    for (let i = 0; i<8;i++) {
-      if (this.checkbox[i]) {
-        binary += "1"
-      } else {
-        binary += "0"
-      }
-    }
-      this.enteredNumber = parseInt(binary,2);
-    console.log(this.enteredNumber);
+  form: FormGroup;
+  formBooks: FormGroup;
+  formBorrowings: FormGroup;
+  menu = Menu;
+  actualMenu: Menu = Menu.USERS
+  persons: Array<{
+    id: number;
+    name: string;
+    contact: string
+  }> = [];
+  books: Array<{
+    id: number;
+    title: string;
+    author: string;
+    dostupnost: number
+  }> = [];
+  borrowed: Array<{
+    id: number;
+    user: string;
+    book: string;
+  }> = [];
+  constructor() {
+    this.form = new FormGroup({
+      id: new FormControl(),
+      name: new FormControl(),
+      contact: new FormControl()
+    });
+    this.formBooks = new FormGroup({
+      id: new FormControl(),
+      title: new FormControl(),
+      author: new FormControl(),
+      available: new FormControl()
+    });
+    this.formBorrowings = new FormGroup({
+      id: new FormControl(),
+      user: new FormControl(),
+      book: new FormControl()
+    });
   }
-  ZmenaCislo (cislo :number): void{
-    if(cislo<=255 && cislo >=0) {
-      let binary = cislo.toString(2);
-      while (binary.length < 8) {
-        binary = "0" + binary;
-      }
-      for (let i = 0; i < binary.length; i++) {
-        if (binary[i] == "0") {
-          this.checkbox[i] = false;
-        } else {
-          this.checkbox[i] = true;
-        }
-      }
-    }
+  savePerson(): void {
+    this.persons.push(this.form.value);
+    this.form.reset();
+  }
+  addBook(): void{
+    this.books.push(this.formBooks.value);
+    this.formBooks.reset();
+  }
+  addBorrowed(): void {
+    this.borrowed.push(this.formBorrowings.value);
+    this.formBorrowings.reset();
+  }
+  changeMenu(changedMenu: Menu): void {
+    this.actualMenu = changedMenu;
   }
 }

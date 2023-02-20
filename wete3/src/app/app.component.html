@@ -1,14 +1,87 @@
-<div class="header">
+<div>
+  <button (click)="changeMenu(menu.USERS)">Users</button>
+  <button (click)="changeMenu(menu.BOOKS)">Books</button>
+  <button (click)="changeMenu(menu.BORROWINGS)">Borrowings</button>
+</div>
 
+<form [formGroup]="formBorrowings" *ngIf="actualMenu == menu.BORROWINGS">
+  <label>id:
+    <input type="text" formControlName="id">
+  </label>
+  <label>book:
+    <input type="text" formControlName="book">
+  </label>
+  <label>user:
+    <input type="text" formControlName="user">
+  </label>
+  <button (click)="addBorrowed()">Pridaj</button>
+  <table *ngIf="borrowed.length">
+    <tr>
+      <th>ID</th>
+      <th>Book</th>
+      <th>User</th>
 
-  <input #input (change)="ZmenaCislo(input.valueAsNumber)" type="number" [value]="enteredNumber"/><br>
-  <input (change)="ZmenaCheckboxu(0) "type="checkbox" [checked]="checkbox[0]"/>
-  <input (change)="ZmenaCheckboxu(1) "type="checkbox" [checked]="checkbox[1]"/>
-  <input (change)="ZmenaCheckboxu(2) "type="checkbox" [checked]="checkbox[2]"/>
-  <input (change)="ZmenaCheckboxu(3) "type="checkbox" [checked]="checkbox[3]"/>
-  <input (change)="ZmenaCheckboxu(4) "type="checkbox" [checked]="checkbox[4]"/>
-  <input (change)="ZmenaCheckboxu(5) "type="checkbox" [checked]="checkbox[5]"/>
-  <input (change)="ZmenaCheckboxu(6) "type="checkbox" [checked]="checkbox[6]"/>
-  <input (change)="ZmenaCheckboxu(7) "type="checkbox" [checked]="checkbox[7]"/>
+    </tr>
+    <tr *ngFor="let val of borrowed">
+      <td>{{val.id}}</td>
+      <td>{{val.book}}</td>
+      <td>{{val.user}}</td>
+    </tr>
+  </table>
+</form>
 
-  </div>
+<form [formGroup]="formBooks" *ngIf="actualMenu == menu.BOOKS">
+  <label>id:
+    <input type="text" formControlName="id">
+  </label>
+  <label>name:
+    <input type="text" formControlName="title">
+  </label>
+  <label>author:
+    <input type="text" formControlName="author">
+  </label>
+  <label>Dostupnosť:
+    <input type="text" formControlName="dostupnost">
+  </label>
+  <button (click)="addBook()">Pridaj</button>
+  <table *ngIf="books.length">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Author</th>
+      <th>Dostupnosť</th>
+
+    </tr>
+    <tr *ngFor="let value of books">
+      <td>{{value.id}}</td>
+      <td>{{value.title}}</td>
+      <td>{{value.author}}</td>
+      <td>{{value.dostupnost}}</td>
+    </tr>
+  </table>
+</form>
+
+<form [formGroup]="form" *ngIf="actualMenu == menu.USERS">
+  <label>id:
+    <input type="text" formControlName="id">
+  </label>
+  <label>name:
+    <input type="text" formControlName="name">
+  </label>
+  <label>contact:
+    <input type="text" formControlName="contact">
+  </label>
+  <button type="button" (click)="savePerson()">save person</button>
+  <table *ngIf="persons.length">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Contact</th>
+    </tr>
+    <tr *ngFor="let val of persons">
+      <td>{{val.id}}</td>
+      <td>{{val.name}}</td>
+      <td>{{val.contact}}</td>
+    </tr>
+  </table>
+</form>
