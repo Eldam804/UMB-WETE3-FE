@@ -1,5 +1,5 @@
 <div>
-  <button (click)="changeMenu(menu.USERS)">Users</button>
+  <button routerLink="/user">Users</button>
   <button (click)="changeMenu(menu.BOOKS)">Books</button>
   <button (click)="changeMenu(menu.BORROWINGS)">Borrowings</button>
 </div>
@@ -61,39 +61,6 @@
   </table>
 </form>
 
-<form [formGroup]="form" *ngIf="actualMenu == menu.USERS">
-  <label>id:
-    <input type="text" formControlName="id">
-  </label>
-  <label>name:
-    <input type="text" formControlName="name">
-    <p class="invalid-text" *ngIf="form.controls.name.invalid">Zadajte meno</p>
-  </label>
-  <label>surname:
-    <input type="text" formControlName="surname">
-      <p class="invalid-text" *ngIf="form.controls.surname.errors?.minlength">
-        Minimalna dlzka je 3 znaky
-      </p>
-      <p class="invalid-text" *ngIf="form.controls.surname.errors?.required">
-        Vlozte priezvisko
-      </p>
-  </label>
-  <label>contact:
-    <input type="text" formControlName="contact">
-  </label>
-  <button type="button" [disabled]="form.invalid" (click)="savePerson()">save person</button>
-  <table *ngIf="persons.length">
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Priezvisko</th>
-      <th>Contact</th>
-    </tr>
-    <tr *ngFor="let val of persons">
-      <td>{{val.id}}</td>
-      <td>{{val.name}}</td>
-      <td>{{val.surname}}</td>
-      <td>{{val.contact}}</td>
-    </tr>
-  </table>
-</form>
+<ng-container *ngIf="actualMenu == menu.USERS">
+  <router-outlet></router-outlet>
+</ng-container>

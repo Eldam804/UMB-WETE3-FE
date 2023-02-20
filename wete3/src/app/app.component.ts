@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {User} from "./model/user.model";
 
 
 export enum Menu{
@@ -21,12 +22,7 @@ export class AppComponent {
   formBorrowings: FormGroup;
   menu = Menu;
   actualMenu: Menu = Menu.USERS
-  persons: Array<{
-    id: number;
-    name: string;
-    surname: string;
-    contact: string
-  }> = [];
+  persons: Array<User> = [];
   books: Array<{
     id: number;
     title: string;
@@ -71,5 +67,13 @@ export class AppComponent {
   }
   changeMenu(changedMenu: Menu): void {
     this.actualMenu = changedMenu;
+  }
+  deletePerson(index: number): void {
+    this.persons.splice(index, 1);
+  }
+
+  editPerson(i: number): void {
+    this.form.setValue(this.persons[i]);
+    this.deletePerson(i);
   }
 }
