@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 export enum Menu{
@@ -40,8 +40,8 @@ export class AppComponent {
   constructor() {
     this.form = new FormGroup({
       id: new FormControl(),
-      name: new FormControl(),
-      contact: new FormControl()
+      name: new FormControl(null, Validators.required),
+      contact: new FormControl(null, [Validators.required, Validators.max(20)])
     });
     this.formBooks = new FormGroup({
       id: new FormControl(),

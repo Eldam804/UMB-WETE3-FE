@@ -67,6 +67,7 @@
   </label>
   <label>name:
     <input type="text" formControlName="name">
+    <p class="invalid-text" *ngIf="form.controls.name.invalid">Zadajte meno</p>
   </label>
   <label>contact:
     <input type="text" formControlName="contact">
