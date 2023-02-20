@@ -69,19 +69,30 @@
     <input type="text" formControlName="name">
     <p class="invalid-text" *ngIf="form.controls.name.invalid">Zadajte meno</p>
   </label>
+  <label>surname:
+    <input type="text" formControlName="surname">
+      <p class="invalid-text" *ngIf="form.controls.surname.errors?.minlength">
+        Minimalna dlzka je 3 znaky
+      </p>
+      <p class="invalid-text" *ngIf="form.controls.surname.errors?.required">
+        Vlozte priezvisko
+      </p>
+  </label>
   <label>contact:
     <input type="text" formControlName="contact">
   </label>
-  <button type="button" (click)="savePerson()">save person</button>
+  <button type="button" [disabled]="form.invalid" (click)="savePerson()">save person</button>
   <table *ngIf="persons.length">
     <tr>
       <th>ID</th>
       <th>Name</th>
+      <th>Priezvisko</th>
       <th>Contact</th>
     </tr>
     <tr *ngFor="let val of persons">
       <td>{{val.id}}</td>
       <td>{{val.name}}</td>
+      <td>{{val.surname}}</td>
       <td>{{val.contact}}</td>
     </tr>
   </table>
