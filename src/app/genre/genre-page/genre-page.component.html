@@ -1,0 +1,22 @@
+<form [formGroup]="formGenre">
+  <label>id:
+    <input type="text" formControlName="id">
+  </label>
+  <label>Žáner:
+    <input type="text" formControlName="nazov">
+  </label>
+  <button (click)="addGenre()">Pridaj</button>
+  <table *ngIf="Genre.length">
+    <tr>
+      <th>ID</th>
+      <th>Názov</th>
+    </tr>
+    <tr *ngFor="let val of Genre; let i = index">
+      <td>{{val.id}}</td>
+      <td>{{val.nazov}}</td>
+      <td>
+        <button (click)="editGenre(i)">Upraviť Žáner</button>
+        <button (click)="deleteGenre(i)">Vymaz Žáner</button>
+      </td></tr>
+  </table>
+</form>
