@@ -2,10 +2,12 @@
   <label>id:
     <input type="text" formControlName="id">
   </label>
+  <br>
   <label>name:
     <input type="text" formControlName="name">
     <p class="invalid-text" *ngIf="form.controls.name.invalid">Zadajte meno</p>
   </label>
+  <br>
   <label>surname:
     <input type="text" formControlName="surname">
     <p class="invalid-text" *ngIf="form.controls.surname.errors?.minlength">
@@ -15,9 +17,11 @@
       Vlozte priezvisko
     </p>
   </label>
+  <br>
   <label>contact:
     <input type="text" formControlName="contact">
   </label>
+  <br>
   <button type="button" [disabled]="form.invalid" (click)="savePerson()">save person</button>
   <table *ngIf="persons.length">
     <tr>
