@@ -4,6 +4,7 @@ import {UserPageComponent} from "./user/user-page/user-page.component";
 import {Routes, RouterModule, Router} from "@angular/router";
 import {BookPageComponent} from "./book/book-page/book-page.component";
 import {BorrowingsPageComponent} from "./borrowings/borrowings-page/borrowings-page.component";
+import {GenrePageComponent} from "./genre/genre-page/genre-page.component";
 
 const router: Routes = [{
   path: "user",
@@ -16,6 +17,10 @@ const router: Routes = [{
   {
   path: "borrowings",
   component: BorrowingsPageComponent,
+  },
+  {
+    path:"genre",
+    component: GenrePageComponent,
   }
 ]
 

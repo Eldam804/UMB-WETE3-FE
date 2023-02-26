@@ -9,12 +9,14 @@ import { AppRoutingModule } from './app-routing.module';
 import {RouterOutlet} from "@angular/router";
 import {BookPageComponent} from "./book/book-page/book-page.component";
 import { BorrowingsPageComponent } from './borrowings/borrowings-page/borrowings-page.component';
+import { GenrePageComponent } from './genre/genre-page/genre-page.component';
 @NgModule({
   declarations: [
       AppComponent,
       UserPageComponent,
       BookPageComponent,
-      BorrowingsPageComponent
+      BorrowingsPageComponent,
+      GenrePageComponent
     ],
   imports: [
     BrowserModule,
