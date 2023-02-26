@@ -1,0 +1,27 @@
+<form [formGroup]="formBorrowings">
+  <label>id:
+    <input type="text" formControlName="id">
+  </label>
+  <label>book:
+    <input type="text" formControlName="book">
+  </label>
+  <label>user:
+    <input type="text" formControlName="user">
+  </label>
+  <button (click)="addBorrowed()">Pridaj</button>
+  <table *ngIf="borrowed.length">
+  <tr>
+    <th>ID</th>
+    <th>Book</th>
+    <th>User</th>
+  </tr>
+  <tr *ngFor="let val of borrowed; let i = index">
+    <td>{{val.id}}</td>
+    <td>{{val.book}}</td>
+    <td>{{val.user}}</td>
+    <td>
+      <button (click)="editBorrow(i)">Upraviť výpožičku</button>
+      <button (click)="deleteBorrow(i)">Vymaz výpožičku</button>
+    </td></tr>
+  </table>
+</form>

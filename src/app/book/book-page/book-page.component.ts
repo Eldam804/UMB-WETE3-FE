@@ -30,4 +30,7 @@ export class BookPageComponent {
     this.formBooks.setValue(this.books[i]);
     this.deleteBook(i);
   }
+
+
+
 }

@@ -8,11 +8,13 @@ import { UserPageComponent } from './user/user-page/user-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import {RouterOutlet} from "@angular/router";
 import {BookPageComponent} from "./book/book-page/book-page.component";
+import { BorrowingsPageComponent } from './borrowings/borrowings-page/borrowings-page.component';
 @NgModule({
   declarations: [
       AppComponent,
       UserPageComponent,
-      BookPageComponent
+      BookPageComponent,
+      BorrowingsPageComponent
     ],
   imports: [
     BrowserModule,
