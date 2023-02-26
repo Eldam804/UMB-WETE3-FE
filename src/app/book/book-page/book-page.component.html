@@ -1,0 +1,41 @@
+<form [formGroup]="formBooks">
+  <label>id:
+    <input type="text" formControlName="id">
+  </label>
+  <br>
+  <label>title:
+    <input type="text" formControlName="title">
+    <p class="invalid-text" *ngIf="formBooks.controls.title.invalid">Zadajte nazov</p>
+  </label>
+  <br>
+  <label>author:
+    <input type="text" formControlName="author">
+    <p class="invalid-text" *ngIf="formBooks.controls.author.invalid">Zadajte meno autora</p>
+  </label>
+  <br>
+  <label>available:
+    <input type="text" formControlName="available">
+    <p class="invalid-text" *ngIf="formBooks.controls.available.invalid">Zadajte pocet knih</p>
+  </label>
+  <br>
+  <button [disabled]="formBooks.invalid" (click)="addBook()">Pridaj</button>
+  <table *ngIf="books.length">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Author</th>
+      <th>Available</th>
+
+    </tr>
+    <tr *ngFor="let val of books, let i = index">
+      <td>{{val.id}}</td>
+      <td>{{val.title}}</td>
+      <td>{{val.author}}</td>
+      <td>{{val.available}}</td>
+      <td>
+        <button (click)="editBook(i)">Upraviť knihu</button>
+        <button (click)="deleteBook(i)">Vymazať knihu</button>
+      </td>
+    </tr>
+  </table>
+</form>

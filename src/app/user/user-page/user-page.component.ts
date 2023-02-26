@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../model/user.model";
-import {Menu} from "../../app.component";
 
 
 
