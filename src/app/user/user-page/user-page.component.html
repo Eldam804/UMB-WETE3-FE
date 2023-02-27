@@ -1,6 +1,10 @@
 <h3>Pouzivatelia</h3>
-<app-user-form (formCreate)="createPerson($event)"></app-user-form>
+<app-user-form
+  [personData]="person"
+  (formCreate)="createPerson($event)"
+></app-user-form>
 <app-user-list
   (personToDelete)="deletePerson($event)"
   (personToUpdate)="selectPersonToUpdate($event)"
-  [persons]="persons"></app-user-list>
+  [persons]="persons"
+></app-user-list>

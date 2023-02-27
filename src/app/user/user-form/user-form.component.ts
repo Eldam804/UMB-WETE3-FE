@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../model/user.model";
 
@@ -11,7 +11,14 @@ export class UserFormComponent {
 
   @Output()
   formCreate = new EventEmitter<User>;
+
   form: FormGroup;
+  @Input()
+  set personData(person: User | undefined){
+    if(person){
+      this.form.setValue(person);
+    }
+  }
   constructor() {
     this.form = new FormGroup({
       id: new FormControl(),

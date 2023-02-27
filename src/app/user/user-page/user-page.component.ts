@@ -1,4 +1,4 @@
-import {Component, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../model/user.model";
 
@@ -11,6 +11,8 @@ import {User} from "../../model/user.model";
 })
 export class UserPageComponent {
   persons: Array<User> = [];
+  person?: User;
+
   constructor() {
 
   }
@@ -21,10 +23,13 @@ export class UserPageComponent {
   }
 
   selectPersonToUpdate(personId: number): void {
+    this.person = this.persons.find(person => person.id === personId)
+  }
+
+  deletePerson(personId: number):void {
     const index: number = this.persons.findIndex(person => person.id === personId);
     if (index !== -1){
       this.persons.splice(index, 1);
     }
   }
-
 }

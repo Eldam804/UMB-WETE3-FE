@@ -5,15 +5,15 @@
     <th>Priezvisko</th>
     <th>Contact</th>
   </tr>
-  <tr *ngFor="let val of persons; let i = index">
+  <tr *ngFor="let val of persons;">
     <td>{{val.id}}</td>
     <td>{{val.name}}</td>
     <td>{{val.surname}}</td>
 
     <td>{{val.contact}}</td>
     <td>
-      <button (click)="editPerson(i)">Upraviť osobu</button>
-      <button (click)="deletePerson(i)">Vymaz osobu</button>
+      <button (click)="editPerson(val.id)">Upraviť osobu</button>
+      <button (click)="deletePerson(val.id)">Vymaz osobu</button>
     </td>
   </tr>
 </table>
