@@ -1,0 +1,19 @@
+<table *ngIf="persons.length">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Priezvisko</th>
+    <th>Contact</th>
+  </tr>
+  <tr *ngFor="let val of persons; let i = index">
+    <td>{{val.id}}</td>
+    <td>{{val.name}}</td>
+    <td>{{val.surname}}</td>
+
+    <td>{{val.contact}}</td>
+    <td>
+      <button (click)="editPerson(i)">Upraviť osobu</button>
+      <button (click)="deletePerson(i)">Vymaz osobu</button>
+    </td>
+  </tr>
+</table>
