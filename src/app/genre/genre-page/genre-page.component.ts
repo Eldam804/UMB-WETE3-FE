@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
+import {Genre} from "../../model/genre.model";
 
 @Component({
   selector: 'app-genre-page',
@@ -7,32 +8,24 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./genre-page.component.css']
 })
 export class GenrePageComponent {
-  formGenre:FormGroup;
-  Genre: Array<{
-    id: number;
-    nazov: string;
-  }> = [];
-
+  genres: Array<Genre> = [];
+  genre?: Genre;
   constructor() {
-    this.formGenre = new FormGroup({
-      id: new FormControl(),
-      nazov: new FormControl()
-    });
-  }
-  addGenre(): void {
-    this.Genre.push(this.formGenre.value);
-    this.formGenre.reset();
   }
 
 
-  editGenre(i: number): void{
-    this.formGenre.setValue(this.Genre[i]);
-    this.deleteGenre(i);
-
+  createGenre(genre: Genre): void {
+    this.genres.push(genre);
   }
 
-  deleteGenre(index: number): void {
-    this.Genre.splice(index, 1);
+  updateGenre(genreId: number): void {
+    this.genre = this.genres.find(genre => genre.id === genreId)
   }
 
+  deleteGenre(genreId: number): void {
+    const index: number = this.genres.findIndex(genre => genre.id === genreId);
+    if (index !== -1) {
+      this.genres.splice(index, 1);
+    }
+  }
 }
