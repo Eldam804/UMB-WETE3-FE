@@ -1,11 +1,11 @@
 <form [formGroup]="formBorrowings">
   <label>book:
     <input type="text" formControlName="book">
-    <p class="invalid-text" *ngIf="formBorrowings.controls.title.invalid">Zadajte nazov</p>
+    <p class="invalid-text" *ngIf="formBorrowings.controls.book.invalid">Zadajte nazov</p>
   </label>
   <label>user:
     <input type="text" formControlName="user">
-    <p class="invalid-text" *ngIf="formBorrowings.controls.title.invalid">Zadajte nazov</p>
+    <p class="invalid-text" *ngIf="formBorrowings.controls.user.invalid">Zadajte nazov</p>
   </label>
   <button (click)="addBorrowed()">Pridaj</button>
 </form>
