@@ -1,0 +1,14 @@
+<table *ngIf="genre.length">
+  <tr>
+    <th>ID</th>
+    <th>Názov</th>
+  </tr>
+  <tr *ngFor="let val of genre">
+    <td>{{val.id}}</td>
+    <td>{{val.nazov}}</td>
+    <td>
+      <button (click)="editGenre(val.id)">Upraviť Žáner</button>
+      <button (click)="deleteGenre(val.id)">Vymaz Žáner</button>
+    </td>
+  </tr>
+</table>
