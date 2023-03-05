@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
+import {Borrow} from "../../model/borrow.model";
 
 @Component({
   selector: 'app-borrowings-page',
@@ -7,32 +8,24 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./borrowings-page.component.css']
 })
 export class BorrowingsPageComponent {
-  formBorrowings:FormGroup;
-  borrowed: Array<{
-    id: number;
-    user: string;
-    book: string;
-  }> = [];
+  borrowings: Array<Borrow> = [];
+  borrow?: Borrow;
   constructor() {
-    this.formBorrowings = new FormGroup({
-      id: new FormControl(),
-      user: new FormControl(),
-      book: new FormControl()
-    });
-  }
-  addBorrowed(): void {
-    this.borrowed.push(this.formBorrowings.value);
-    this.formBorrowings.reset();
   }
 
 
-  editBorrow(i: number): void{
-    this.formBorrowings.setValue(this.borrowed[i]);
-    this.deleteBorrow(i);
-
+  createBorrow(borrow: Borrow): void {
+    this.borrowings.push(borrow);
   }
 
-  deleteBorrow(index: number): void {
-    this.borrowed.splice(index, 1);
+  updateBorrow(borrowId: number): void {
+    this.borrow = this.borrowings.find(borrow => borrow.id === borrowId)
+  }
+
+  deleteBorrow(borrowId: number): void {
+    const index: number = this.borrowings.findIndex(borrow => borrow.id === borrowId);
+    if (index !== -1) {
+      this.borrowings.splice(index, 1);
+    }
   }
 }
