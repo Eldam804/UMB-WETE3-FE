@@ -12,6 +12,8 @@ import { BorrowingsPageComponent } from './borrowings/borrowings-page/borrowings
 import { GenrePageComponent } from './genre/genre-page/genre-page.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserListComponent } from './user/user-list/user-list.component';
+import { BookListComponent } from './book/book-list/book-list.component';
+import { BookFormComponent } from './book/book-form/book-form.component';
 @NgModule({
   declarations: [
       AppComponent,
@@ -20,7 +22,9 @@ import { UserListComponent } from './user/user-list/user-list.component';
       BorrowingsPageComponent,
       GenrePageComponent,
       UserFormComponent,
-      UserListComponent
+      UserListComponent,
+      BookListComponent,
+      BookFormComponent
     ],
   imports: [
     BrowserModule,
