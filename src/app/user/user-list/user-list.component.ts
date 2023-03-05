@@ -21,5 +21,6 @@ export class UserListComponent {
 
   editPerson(userId: number): void {
     this.personToUpdate.emit(userId);
+    this.deletePerson(userId);
   }
 }
