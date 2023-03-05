@@ -1,0 +1,16 @@
+<table *ngIf="borrowed.length">
+  <tr>
+    <th>ID</th>
+    <th>Book</th>
+    <th>User</th>
+  </tr>
+  <tr *ngFor="let val of borrowed;">
+    <td>{{val.id}}</td>
+    <td>{{val.book}}</td>
+    <td>{{val.user}}</td>
+    <td>
+      <button (click)="editBorrow(val.id)">Upraviť výpožičku</button>
+      <button (click)="deleteBorrow(val.id)">Vymaz výpožičku</button>
+    </td></tr>
+</table>
+
