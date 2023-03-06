@@ -40,7 +40,9 @@ export class UserFormComponent {
 
   savePerson(): void {
     if(this.form.valid){
-      if(this.form.controls.id.value !== undefined){
+      console.log("sem sa dostanem");
+      if(this.form.controls.id.value != undefined){
+        console.log("ID definovane");
         const user: User = {
           id: this.form.controls.id.value,
           firstName: this.form.controls.firstName.value,
@@ -48,6 +50,7 @@ export class UserFormComponent {
         }
         this.formUpdate.emit(user);
       }else {
+        console.log("ID nedefinovane");
         const user: User = {
           id: Date.now(),
           firstName: this.form.controls.firstName.value,
