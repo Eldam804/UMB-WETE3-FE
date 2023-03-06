@@ -8,29 +8,24 @@ import {Book} from "../../model/book.model";
   styleUrls: ['./book-page.component.css']
 })
 export class BookPageComponent {
-  formBooks: FormGroup;
   books: Array<Book> = [];
+  book?: Book;
   constructor() {
-    this.formBooks = new FormGroup({
-      id: new FormControl(),
-      title: new FormControl(null, Validators.required),
-      author: new FormControl(null, Validators.required),
-      available: new FormControl(null, Validators.required)
-    });
-  }
-  addBook(): void{
-    this.books.push(this.formBooks.value);
-    this.formBooks.reset();
-  }
-  deleteBook(index: number): void {
-    this.books.splice(index, 1);
-  }
-
-  editBook(i: number): void {
-    this.formBooks.setValue(this.books[i]);
-    this.deleteBook(i);
   }
 
 
+  createBook($event: Book): void {
+    this.books.push($event);
+  }
 
+  updateBook(bookId: number): void {
+    this.book = this.books.find(book => book.id === bookId)
+  }
+
+  deleteBook(bookId: number): void {
+    const index: number = this.books.findIndex(book => book.id === bookId);
+    if (index !== -1) {
+      this.books.splice(index, 1);
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../model/user.model";
 
@@ -10,27 +10,26 @@ import {User} from "../../model/user.model";
   styleUrls: ['./user-page.component.css']
 })
 export class UserPageComponent {
-  form: FormGroup;
   persons: Array<User> = [];
+  person?: User;
+
   constructor() {
-    this.form = new FormGroup({
-      id: new FormControl(),
-      name: new FormControl(null, Validators.required),
-      surname: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      contact: new FormControl()
-    });
-  }
-  savePerson(): void {
-    this.persons.push(this.form.value);
-    this.form.reset();
+
   }
 
-  deletePerson(index: number): void {
-    this.persons.splice(index, 1);
+  createPerson(person: User): void{
+    this.persons.push(person);
+    console.debug("PERSONS:", this.persons);
   }
 
-  editPerson(i: number): void {
-    this.form.setValue(this.persons[i]);
-    this.deletePerson(i);
+  selectPersonToUpdate(personId: number): void {
+    this.person = this.persons.find(person => person.id === personId)
+  }
+
+  deletePerson(personId: number):void {
+    const index: number = this.persons.findIndex(person => person.id === personId);
+    if (index !== -1){
+      this.persons.splice(index, 1);
+    }
   }
 }

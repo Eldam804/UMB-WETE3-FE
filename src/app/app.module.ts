@@ -10,13 +10,29 @@ import {RouterOutlet} from "@angular/router";
 import {BookPageComponent} from "./book/book-page/book-page.component";
 import { BorrowingsPageComponent } from './borrowings/borrowings-page/borrowings-page.component';
 import { GenrePageComponent } from './genre/genre-page/genre-page.component';
+import { UserFormComponent } from './user/user-form/user-form.component';
+import { UserListComponent } from './user/user-list/user-list.component';
+import { BookListComponent } from './book/book-list/book-list.component';
+import { BookFormComponent } from './book/book-form/book-form.component';
+import { BorrowingsFormComponent } from './borrowings/borrowings-form/borrowings-form.component';
+import { BorrowingsListComponent } from './borrowings/borrowings-list/borrowings-list.component';
+import { GenreFormComponent } from './genre/genre-form/genre-form.component';
+import { GenreListComponent } from './genre/genre-list/genre-list.component';
 @NgModule({
   declarations: [
       AppComponent,
       UserPageComponent,
       BookPageComponent,
       BorrowingsPageComponent,
-      GenrePageComponent
+      GenrePageComponent,
+      UserFormComponent,
+      UserListComponent,
+      BookListComponent,
+      BookFormComponent,
+      BorrowingsFormComponent,
+      BorrowingsListComponent,
+      GenreFormComponent,
+      GenreListComponent
     ],
   imports: [
     BrowserModule,
