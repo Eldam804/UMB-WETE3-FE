@@ -18,6 +18,7 @@ import { BorrowingsFormComponent } from './borrowings/borrowings-form/borrowings
 import { BorrowingsListComponent } from './borrowings/borrowings-list/borrowings-list.component';
 import { GenreFormComponent } from './genre/genre-form/genre-form.component';
 import { GenreListComponent } from './genre/genre-list/genre-list.component';
+import {HttpClientModule} from "@angular/common/http";
 @NgModule({
   declarations: [
       AppComponent,
@@ -39,7 +40,8 @@ import { GenreListComponent } from './genre/genre-list/genre-list.component';
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
-    RouterOutlet
+    RouterOutlet,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

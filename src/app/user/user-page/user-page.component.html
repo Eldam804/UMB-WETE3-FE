@@ -1,6 +1,9 @@
 <h3>Pouzivatelia</h3>
 <app-user-form
+  [helpData]="'HELP DATA'"
+  [helpDataSetter]="'HELP DATA SETTER'"
   [personData]="person"
+  (formUpdate)="updatePerson($event)"
   (formCreate)="createPerson($event)"
 ></app-user-form>
 <app-user-list

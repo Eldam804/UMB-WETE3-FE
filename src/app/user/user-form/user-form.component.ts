@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../model/user.model";
 
@@ -9,9 +9,20 @@ import {User} from "../../model/user.model";
 })
 export class UserFormComponent {
 
-  @Output()
-  formCreate = new EventEmitter<User>;
+  @Input()
+  helpData?: string;
 
+  @Input()
+  set helpDataSetter(data: string){
+    if (data){
+      console.log("SETTER:", data);
+    }
+  }
+  @Output()
+  formCreate = new EventEmitter<User>();
+
+  @Output()
+  formUpdate = new EventEmitter<User>();
   form: FormGroup;
   @Input()
   set personData(person: User | undefined){
@@ -22,22 +33,42 @@ export class UserFormComponent {
   constructor() {
     this.form = new FormGroup({
       id: new FormControl(),
-      name: new FormControl(null, Validators.required),
-      surname: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      contact: new FormControl()
+      firstName: new FormControl(null, Validators.required),
+      lastName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
     });
   }
 
   savePerson(): void {
     if(this.form.valid){
-      const user: User = {
-        id: Date.now(),
-        name: this.form.controls.name.value,
-        surname: this.form.controls.surname.value,
-        contact: this.form.controls.contact.value
+      if(this.form.controls.id.value !== undefined){
+        const user: User = {
+          id: this.form.controls.id.value,
+          firstName: this.form.controls.firstName.value,
+          lastName: this.form.controls.lastName.value,
+        }
+        this.formUpdate.emit(user);
+      }else {
+        const user: User = {
+          id: Date.now(),
+          firstName: this.form.controls.firstName.value,
+          lastName: this.form.controls.lastName.value,
+        }
+        this.formCreate.emit(user);
       }
-      this.formCreate.emit(user);
       this.form.reset()
     }
+  }
+
+  ngOnInit(){
+    console.log("ON_INIT")
+  }
+  ngOnDestroy(){
+    console.log("ON_DESTROY")
+  }
+  ngOnChanges(changes: SimpleChanges){
+    if(changes.helpData?.currentValue){
+      console.log("ON CHANGES:", this.helpData);
+    }
+
   }
 }

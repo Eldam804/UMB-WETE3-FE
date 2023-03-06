@@ -7,10 +7,8 @@
   </tr>
   <tr *ngFor="let val of persons;">
     <td>{{val.id}}</td>
-    <td>{{val.name}}</td>
-    <td>{{val.surname}}</td>
-
-    <td>{{val.contact}}</td>
+    <td>{{val.firstName}}</td>
+    <td>{{val.lastName}}</td>
     <td>
       <button (click)="editPerson(val.id)">Upraviť osobu</button>
       <button (click)="deletePerson(val.id)">Vymaz osobu</button>
