@@ -11,7 +11,7 @@ export class GenreFormComponent {
 
   formGenre: FormGroup;
   @Output()
-  formCreate = new EventEmitter<Genre>;
+  formCreate = new EventEmitter<Genre>();
   @Input()
   set genreData(genre: Genre | undefined){
     if(genre){

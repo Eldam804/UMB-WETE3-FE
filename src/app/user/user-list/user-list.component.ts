@@ -19,8 +19,13 @@ export class UserListComponent {
     this.personToDelete.emit(index);
   }
 
-  editPerson(userId: number): void {
+  // editPerson(userId: number): void {
+  //   this.personToUpdate.emit(userId);
+  // }
+
+
+  updatePerson(userId: number): void {
     this.personToUpdate.emit(userId);
-    this.deletePerson(userId);
   }
+
 }

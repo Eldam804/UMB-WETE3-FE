@@ -2,6 +2,7 @@
 <app-user-form
   [personData]="person"
   (formCreate)="createPerson($event)"
+  (formUpdate)="updatePerson($event)"
 ></app-user-form>
 <app-user-list
   (personToDelete)="deletePerson($event)"

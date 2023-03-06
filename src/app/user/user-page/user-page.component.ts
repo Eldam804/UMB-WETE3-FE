@@ -17,19 +17,30 @@ export class UserPageComponent {
 
   }
 
+  updatePerson(person: User): void {
+    const index = this.persons.findIndex(person => person.id === person.id);
+    if (index !== -1) {
+      this.persons[index] = person;
+      this.person = undefined;
+    }
+  }
+
+
+
   createPerson(person: User): void{
     this.persons.push(person);
     console.debug("PERSONS:", this.persons);
   }
 
   selectPersonToUpdate(personId: number): void {
-    this.person = this.persons.find(person => person.id === personId)
+    this.person = this.persons.find(person => person.id === personId);
   }
-
   deletePerson(personId: number):void {
     const index: number = this.persons.findIndex(person => person.id === personId);
     if (index !== -1){
       this.persons.splice(index, 1);
     }
   }
+
+
 }

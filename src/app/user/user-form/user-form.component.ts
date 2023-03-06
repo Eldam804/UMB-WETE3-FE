@@ -10,8 +10,9 @@ import {User} from "../../model/user.model";
 export class UserFormComponent {
 
   @Output()
-  formCreate = new EventEmitter<User>;
-
+  formCreate = new EventEmitter<User>();
+  @Output()
+  formUpdate = new EventEmitter<User>();
   form: FormGroup;
   @Input()
   set personData(person: User | undefined){
@@ -24,20 +25,25 @@ export class UserFormComponent {
       id: new FormControl(),
       name: new FormControl(null, Validators.required),
       surname: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      contact: new FormControl()
     });
   }
-
-  savePerson(): void {
-    if(this.form.valid){
-      const user: User = {
-        id: Date.now(),
-        name: this.form.controls.name.value,
-        surname: this.form.controls.surname.value,
-        contact: this.form.controls.contact.value
-      }
-      this.formCreate.emit(user);
-      this.form.reset()
-    }
+  private prepareUser(id?: number): User {
+    return {
+      id: id !== undefined ? id : Date.now(),
+      name: this.form.controls.name.value,
+      surname: this.form.controls.surname.value };
   }
+  savePerson(): void {
+    if (this.form.valid) {
+      if (this.form.controls.id.value) {
+        this.formUpdate.emit(
+          this.prepareUser(this.form.controls.id.value));
+      } else {
+        this.formCreate.emit(this.prepareUser());
+      }
+      this.form.reset();
+    } }
+
+
 }
+
