@@ -11,7 +11,7 @@ export class UserListComponent {
   persons: Array<User> = [];
 
   @Output()
-  personToUpdate = new EventEmitter<number>();
+  personToUpdate = new EventEmitter<User>();
 
   @Output()
   personToDelete = new EventEmitter<number>();
@@ -19,8 +19,8 @@ export class UserListComponent {
     this.personToDelete.emit(index);
   }
 
-  editPerson(userId: number): void {
-    this.personToUpdate.emit(userId);
-    this.deletePerson(userId);
+  editPerson(user: User): void {
+    this.personToUpdate.emit(user);
+    //this.deletePerson(userId);
   }
 }
