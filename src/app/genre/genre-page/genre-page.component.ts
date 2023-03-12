@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Genre} from "../../model/genre.model";
+import {GenreService} from "../../common/service/genre.service";;
 
 @Component({
   selector: 'app-genre-page',
@@ -10,22 +11,34 @@ import {Genre} from "../../model/genre.model";
 export class GenrePageComponent {
   genres: Array<Genre> = [];
   genre?: Genre;
-  constructor() {
+
+  constructor(private service: GenreService) {
   }
 
+
+  getGenre(): void {
+    this.service.getGenres().subscribe((genre: Genre[]) => {
+      this.genres = genre;
+    })
+  }
 
   createGenre(genre: Genre): void {
-    this.genres.push(genre);
+    this.service.createGenre(genre).subscribe(() => {
+      this.getGenre();
+    })
   }
 
-  updateGenre(genreId: number): void {
-    this.genre = this.genres.find(genre => genre.id === genreId)
+  updateGenre(genre: Genre): void {
+    this.service.updateGenre(genre).subscribe(() => {
+      this.getGenre();
+    });
   }
 
   deleteGenre(genreId: number): void {
-    const index: number = this.genres.findIndex(genre => genre.id === genreId);
-    if (index !== -1) {
-      this.genres.splice(index, 1);
-    }
+    this.service.deleteGenre(genreId).subscribe(() => {
+      this.getGenre();
+    });
+
+
   }
 }
