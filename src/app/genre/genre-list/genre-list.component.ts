@@ -10,7 +10,7 @@ export class GenreListComponent {
   @Input()
   genre: Array<Genre> = [];
   @Output()
-  genreToUpdate = new EventEmitter<number>();
+  genreToUpdate = new EventEmitter<Genre>();
 
   @Output()
   genreToDelete = new EventEmitter<number>();
@@ -19,9 +19,9 @@ export class GenreListComponent {
 
   }
 
-  editGenre(id: number) {
-    this.genreToUpdate.emit(id);
-    this.deleteGenre(id);
+  editGenre(genre: Genre) {
+    this.genreToUpdate.emit(genre);
+    // this.deleteGenre(id);
   }
 
   deleteGenre(id: number) {
