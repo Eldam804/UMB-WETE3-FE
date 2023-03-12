@@ -10,7 +10,7 @@ export class BorrowingsListComponent {
   @Input()
   borrowed: Array<Borrow> = [];
   @Output()
-  borrowToUpdate = new EventEmitter<number>();
+  borrowToUpdate = new EventEmitter<Borrow>();
 
   @Output()
   borrowToDelete = new EventEmitter<number>();
@@ -18,9 +18,8 @@ export class BorrowingsListComponent {
 
   }
 
-  editBorrow(id: number) {
-    this.borrowToUpdate.emit(id);
-    this.deleteBorrow(id);
+  editBorrow(borrow: Borrow) {
+    this.borrowToUpdate.emit(borrow);
   }
 
   deleteBorrow(id: number) {
