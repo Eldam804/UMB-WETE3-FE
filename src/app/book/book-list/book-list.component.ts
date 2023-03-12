@@ -10,7 +10,7 @@ export class BookListComponent {
   @Input()
   books: Array<Book> = [];
   @Output()
-  bookToUpdate = new EventEmitter<number>();
+  bookToUpdate = new EventEmitter<Book>();
 
   @Output()
   bookToDelete = new EventEmitter<number>();
@@ -18,9 +18,8 @@ export class BookListComponent {
 
   }
 
-  editBook(id: number) {
-    this.bookToUpdate.emit(id);
-    this.deleteBook(id);
+  editBook(book: Book) {
+    this.bookToUpdate.emit(book);
   }
 
   deleteBook(id: number) {
