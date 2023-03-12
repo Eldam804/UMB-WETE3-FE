@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Borrow} from "../../model/borrow.model";
+import {BorrowingsService} from "../../common/service/borrowings.service";
+import {User} from "../../model/user.model";
 
 @Component({
   selector: 'app-borrowings-page',
@@ -10,22 +12,30 @@ import {Borrow} from "../../model/borrow.model";
 export class BorrowingsPageComponent {
   borrowings: Array<Borrow> = [];
   borrow?: Borrow;
-  constructor() {
+  constructor(private service: BorrowingsService) {
   }
 
-
-  createBorrow(borrow: Borrow): void {
-    this.borrowings.push(borrow);
+  getBorrow(): void {
+    this.service.getBorrows().subscribe( (borrow: Borrow[]) => {
+      this.borrowings = borrow;
+    })
+  }
+  createBorrow(borrow: Borrow): void{
+    this.service.createBorrow(borrow).subscribe(() => {
+      this.getBorrow();
+    })
   }
 
-  updateBorrow(borrowId: number): void {
-    this.borrow = this.borrowings.find(borrow => borrow.id === borrowId)
+  updateBorrow(borrow: Borrow): void {
+    this.service.updateBorrow(borrow).subscribe( () => {
+      this.getBorrow();
+    });
   }
+  deleteBorrow(borrowId: number):void {
+    this.service.deleteBorrow(borrowId).subscribe(() => {
+      this.getBorrow();
+    });
 
-  deleteBorrow(borrowId: number): void {
-    const index: number = this.borrowings.findIndex(borrow => borrow.id === borrowId);
-    if (index !== -1) {
-      this.borrowings.splice(index, 1);
-    }
+
   }
 }
