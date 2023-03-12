@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class BorrowingsService {
-  private url = 'http://localhost:8080/api/customer';
+  private url = 'http://localhost:8080/api/borrowing';
   constructor(private http: HttpClient) {}
 
     getBorrows(): Observable<Borrow[]>{
