@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Book} from "../../model/book.model";
+import {BookService} from "../../common/service/book.service";
+import {User} from "../../model/user.model";
 
 @Component({
   selector: 'app-book-page',
@@ -10,22 +12,31 @@ import {Book} from "../../model/book.model";
 export class BookPageComponent {
   books: Array<Book> = [];
   book?: Book;
-  constructor() {
+  constructor(private service: BookService) {
+    this.getBooks();
   }
 
-
-  createBook($event: Book): void {
-    this.books.push($event);
+  getBooks(){
+    this.service.getBooks().subscribe( (books: Book[]) => {
+      this.books = books;
+    })
   }
 
-  updateBook(bookId: number): void {
-    this.book = this.books.find(book => book.id === bookId)
+  createBook(book: Book): void {
+    this.service.createBook(book).subscribe(() => {
+      this.getBooks();
+    })
+  }
+
+  updateBook(book: Book): void {
+    this.service.updateBook(book).subscribe( () => {
+      this.getBooks();
+    });
   }
 
   deleteBook(bookId: number): void {
-    const index: number = this.books.findIndex(book => book.id === bookId);
-    if (index !== -1) {
-      this.books.splice(index, 1);
-    }
+    this.service.deleteBook(bookId).subscribe(() => {
+      this.getBooks();
+    });
   }
 }
