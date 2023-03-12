@@ -7,7 +7,7 @@ import {User} from "../../model/user.model";
   providedIn: 'root'
 })
 export class UserService {
-  private url = 'http://localhost:8080/api/customers';
+  private url = 'http://localhost:8080/api/customer';
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]>{
@@ -20,9 +20,9 @@ export class UserService {
     return this.http.post<number>(this.url, user);
   }
   updateUser(user:User): Observable<number>{
-    return this.http.put<number>('${this.url}/${user.id}', user);
+    return this.http.put<number>(this.url + "/" + user.id, user);
   }
   deleteUser(userId: number): Observable<void>{
-    return this.http.delete<void>('${this.url}/${userId}');
+    return this.http.delete<void>(this.url + "/" + userId);
   }
 }
