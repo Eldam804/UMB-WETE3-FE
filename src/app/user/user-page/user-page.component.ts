@@ -1,8 +1,11 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Output, TemplateRef} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {User} from "../../model/user.model";
+import {User, UserResponse} from "../../model/user.model";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {UserService} from "../../common/service/user.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {Observable} from "rxjs";
+import {Pagination} from "../../model/pagination.model";
 
 
 
@@ -12,16 +15,23 @@ import {UserService} from "../../common/service/user.service";
   styleUrls: ['./user-page.component.css']
 })
 export class UserPageComponent {
-  persons: Array<User> = [];
+  persons?: UserResponse;
   person?: User;
 
-  constructor(private service: UserService) {
+  constructor(private service: UserService,
+              private modalService: NgbModal
+              ) {
     this.getPersons();
   }
-  getPersons(): void {
-    this.service.getUsers().subscribe( (persons: User[]) => {
+  getPersons(pagination?: Pagination): void {
+    this.service.getUsers(pagination).pipe().subscribe( (persons: UserResponse) => {
       this.persons = persons;
     })
+  }
+  openModal(content: TemplateRef<any>): void {
+    this.modalService.open(content, {
+      size: "sm"
+    });
   }
 
   createPerson(person: User): void{

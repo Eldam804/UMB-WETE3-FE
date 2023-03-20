@@ -1,12 +1,26 @@
 <h3>Pouzivatelia</h3>
-<app-user-form
-  [helpData]="'HELP DATA'"
-  [helpDataSetter]="'HELP DATA SETTER'"
-  [personData]="person"
-  (formUpdate)="updatePerson($event)"
-  (formCreate)="createPerson($event)"
-></app-user-form>
+
+<button class="btn-light" (click)="openModal(content)">Open</button>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Pridanie pouzivatela</h4>
+    <button type="button" class="btn-close" (click)="modal.close()"></button>
+  </div>
+  <div class="modal-body">
+    <app-user-form
+      [helpData]="'HELP DATA'"
+      [helpDataSetter]="'HELP DATA SETTER'"
+      [personData]="person"
+      (formUpdate)="updatePerson($event)"
+      (formCreate)="createPerson($event)"
+    ></app-user-form>
+  </div>
+</ng-template>
+
+
 <app-user-list
+  (pageChange)="getPersons($event)"
   (personToDelete)="deletePerson($event)"
   (personToUpdate)="updatePerson($event)"
   [persons]="persons"
