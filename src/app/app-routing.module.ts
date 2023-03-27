@@ -5,11 +5,16 @@ import {Routes, RouterModule, Router} from "@angular/router";
 import {BookPageComponent} from "./book/book-page/book-page.component";
 import {BorrowingsPageComponent} from "./borrowings/borrowings-page/borrowings-page.component";
 import {GenrePageComponent} from "./genre/genre-page/genre-page.component";
+import {LoginPageComponent} from "./authentication/login-page/login-page.component";
 
 const router: Routes = [{
   path: "user",
   component: UserPageComponent,
 },
+  {
+    path: "login",
+    component: LoginPageComponent
+  },
   {
     path: "books",
     component: BookPageComponent,

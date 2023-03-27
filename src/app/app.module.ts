@@ -18,8 +18,10 @@ import { BorrowingsFormComponent } from './borrowings/borrowings-form/borrowings
 import { BorrowingsListComponent } from './borrowings/borrowings-list/borrowings-list.component';
 import { GenreFormComponent } from './genre/genre-form/genre-form.component';
 import { GenreListComponent } from './genre/genre-list/genre-list.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginPageComponent } from './authentication/login-page/login-page.component';
+import {AuthHeaderInterceptor} from "./authentication/interceptor/auth-header";
 @NgModule({
   declarations: [
       AppComponent,
@@ -34,7 +36,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       BorrowingsFormComponent,
       BorrowingsListComponent,
       GenreFormComponent,
-      GenreListComponent
+      GenreListComponent,
+      LoginPageComponent
     ],
   imports: [
     BrowserModule,
@@ -45,7 +48,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     NgbModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthHeaderInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
