@@ -6,9 +6,11 @@ import {BookPageComponent} from "./book/book-page/book-page.component";
 import {BorrowingsPageComponent} from "./borrowings/borrowings-page/borrowings-page.component";
 import {GenrePageComponent} from "./genre/genre-page/genre-page.component";
 import {LoginPageComponent} from "./authentication/login-page/login-page.component";
+import {AuthGuard} from "./authentication/guard/auth.guard";
 
 const router: Routes = [{
   path: "user",
+  canActivate: [AuthGuard],
   component: UserPageComponent,
 },
   {
@@ -17,14 +19,17 @@ const router: Routes = [{
   },
   {
     path: "books",
+    canActivate: [AuthGuard],
     component: BookPageComponent,
   },
   {
-  path: "borrowings",
-  component: BorrowingsPageComponent,
+    path: "borrowings",
+    canActivate: [AuthGuard],
+    component: BorrowingsPageComponent,
   },
   {
     path:"genre",
+    canActivate: [AuthGuard],
     component: GenrePageComponent,
   }
 ]
