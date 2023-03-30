@@ -23,5 +23,5 @@
   (pageChange)="getPersons($event)"
   (personToDelete)="deletePerson($event)"
   (personToUpdate)="updatePerson($event)"
-  [persons]="persons"
+  [persons]="persons?.content"
 ></app-user-list>
