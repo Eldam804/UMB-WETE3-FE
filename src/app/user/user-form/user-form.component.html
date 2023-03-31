@@ -1,18 +1,19 @@
 <form [formGroup]="form">
   <br>
-  <label>name:
+  <p class="invalid-text" *ngIf="form.controls.firstName.invalid">Enter Name</p>
+  <label>Name:
     <input type="text" formControlName="firstName">
-    <p class="invalid-text" *ngIf="form.controls.firstName.invalid">Zadajte meno</p>
   </label>
   <br>
-  <label>surname:
+  <p class="invalid-text" *ngIf="form.controls.lastName.errors?.required">
+    Enter surname
+  </p>
+  <label>Surname:
     <input type="text" formControlName="lastName">
     <p class="invalid-text" *ngIf="form.controls.lastName.errors?.minlength">
-      Minimalna dlzka je 3 znaky
+      Min lenght is 3 letters
     </p>
-    <p class="invalid-text" *ngIf="form.controls.lastName.errors?.required">
-      Vlozte priezvisko
-    </p>
+
   </label>
   <br>
   <button type="button" [disabled]="form.invalid" (click)="savePerson()">save person</button>
