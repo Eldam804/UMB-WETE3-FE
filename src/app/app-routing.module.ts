@@ -10,7 +10,7 @@ import {AuthGuard} from "./authentication/guard/auth.guard";
 
 const router: Routes = [{
   path: "user",
-  // canActivate: [AuthGuard],
+  canActivate: [AuthGuard],
   component: UserPageComponent,
 },
   {
@@ -19,17 +19,17 @@ const router: Routes = [{
   },
   {
     path: "books",
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     component: BookPageComponent,
   },
   {
     path: "borrowings",
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     component: BorrowingsPageComponent,
   },
   {
     path:"genre",
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     component: GenrePageComponent,
   }
 ]
