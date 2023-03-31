@@ -1,12 +1,14 @@
+<div class="menu">
 <div>
-  <button routerLink="/user">Users</button>
-  <button routerLink="/books">Books</button>
-  <button routerLink="/borrowings">Borrowings</button>
-  <button routerLink="/genre">Genre</button>
+  <button class="user" routerLink="/user">Users</button>
+  <button class="books" routerLink="/books">Books</button>
+  <button class="borrowing" routerLink="/borrowings">Borrowings</button>
+  <button class="genre" routerLink="/genre">Genre</button>
 </div>
 
-<div class="float-end">
-  <button (click)="logout()">Odhlásiť</button>
+<div class="log_out">
+  <button (click)="logout()">Log out</button>
+</div>
 </div>
 
 <router-outlet></router-outlet>

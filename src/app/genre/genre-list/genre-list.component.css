@@ -1,0 +1,18 @@
+table{
+  margin-left: 20px;
+}
+table, th, td{
+  border: 3px solid #4B6043;
+  border-collapse: collapse;
+  background-color: #95BB72;
+}
+th, td{
+  padding: 5px 15px 5px 5px;
+}
+button{
+  margin-right: 10px;
+  padding: 5px 10px;
+  background-color: #4B6043;
+  color: white;
+  border-color: white;
+}

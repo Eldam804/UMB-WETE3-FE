@@ -1,20 +1,20 @@
 <form [formGroup]="form">
   <br>
-  <p class="invalid-text" *ngIf="form.controls.firstName.invalid">Enter Name</p>
+  <span class="invalid-text" *ngIf="form.controls.firstName.invalid">Enter Name</span><br>
   <label>Name:
     <input type="text" formControlName="firstName">
   </label>
   <br>
-  <p class="invalid-text" *ngIf="form.controls.lastName.errors?.required">
+  <span class="invalid-text" *ngIf="form.controls.lastName.errors?.required">
     Enter surname
-  </p>
+  </span><br>
   <label>Surname:
-    <input type="text" formControlName="lastName">
-    <p class="invalid-text" *ngIf="form.controls.lastName.errors?.minlength">
+    <input type="text" formControlName="lastName"><br>
+    <span class="invalid-text" *ngIf="form.controls.lastName.errors?.minlength">
       Min lenght is 3 letters
-    </p>
+    </span>
 
   </label>
   <br>
-  <button type="button" [disabled]="form.invalid" (click)="savePerson()">save person</button>
+  <button type="button" class="save_button" [disabled]="form.invalid" (click)="savePerson()">save person</button>
 </form>

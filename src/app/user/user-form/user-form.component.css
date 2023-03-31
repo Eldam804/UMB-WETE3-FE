@@ -1,0 +1,14 @@
+form{
+  width: 400px;
+  background-color: #95BB72;
+  padding: 20px;
+}
+*{
+  text-align: center;
+}
+.save_button{
+  margin-top: 20px;
+}
+button{
+  padding: 5px 10px;
+}

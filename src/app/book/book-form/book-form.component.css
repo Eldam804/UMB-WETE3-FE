@@ -1,0 +1,15 @@
+form{
+  width: 500px;
+  margin: 50px auto;
+  text-align: center;
+  height: auto;
+  padding-bottom: 30px;
+  background-color: #95BB72;
+  border-radius: 20px;
+}
+label{
+  margin-bottom: 10px;
+}
+button{
+  padding: 5px 10px;
+}

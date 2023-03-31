@@ -1,0 +1,26 @@
+form{
+  width: 500px;
+  margin: 50px auto;
+  text-align: center;
+  height: auto;
+  padding-bottom: 30px;
+  background-color: #95BB72;
+  border-radius: 20px;
+}
+label{
+  margin-top: 20px;
+}
+input{
+  margin-top: 5px;
+  padding: 10px;
+  width: 300px;
+  height: 35px;
+  background-color: #C7DDB5;
+}
+button{
+  padding: 5px 10px;
+  background-color: #4B6043;
+  color: white;
+  border-color: white;
+  margin-left: 25px;
+}

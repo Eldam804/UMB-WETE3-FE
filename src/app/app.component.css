@@ -18,3 +18,29 @@ table, th, td {
 .active:active {
   color: red;
 }
+
+
+/*//////////////////MENU///////////////////////////////*/
+.menu{
+  margin: 10px;
+  position: fixed;
+  top: 0;
+  border-bottom: 3px solid #4B6043;
+}
+button{
+  border: none;
+  background-color: #ddead1;
+  padding-right: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+button:hover{
+  color: #4B6043;
+}
+.log_out{
+  margin: 10px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  border-bottom: 3px solid #4B6043;
+}
